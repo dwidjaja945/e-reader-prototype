@@ -34,10 +34,8 @@ import RNFS from 'react-native-fs';
 export default class App extends React.Component {
 	render() {
 		return (
-			<View id='area' style={styles.container}>
-				<Epub src={"https://s3.amazonaws.com/epubjs/books/moby-dick/OPS/package.opf"}
-					flow={"scrolled"} />
-			</View>
+			<Epub style={styles.epub} src={"https://s3.amazonaws.com/epubjs/books/moby-dick/OPS/package.opf"}
+				flow="scrolled" />
 		)
 	}
 }
@@ -50,6 +48,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	epub: {
+		marginTop: 40,
 		alignItems: 'center',
 		justifyContent: 'center'
 	}
