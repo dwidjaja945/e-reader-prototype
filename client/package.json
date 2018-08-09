@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "base-64": "^0.1.0",
+    "epub": "^0.2.0",
     "epubjs-rn": "0.0.124",
     "react": "16.3.1",
     "react-native": "~0.55.2",
