@@ -1,41 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Alert } from "react-native";
 
-import { Epub, Streamer } from 'epubjs-rn';
+import { Epub } from 'epubjs-rn';
 
-// Might not need
-import StaticServer from 'react-native-static-server';
-import RNFS from 'react-native-fs';
-// End
-
-// const server = new StaticServer(8080);
-// server.start().then( url => {
-// 	debugger;
-// 	console.log("URL served at : " , url);
-// })
-// debugger;
-// const path = RNFS.DocumentDirectoryPath;
-// console.log(path);
-
-
-
-// // ========================================================================================================================
-// // const streamer = new Streamer();
-
-// // streamer.start("8899")
-// // 	.then( origin => {
-// // 		console.log("Served from origin: " , origin);
-// // 		return streamer.get("https://s3.amazonaws.com/epubjs/books/moby-dick.epub");
-// // 	})
-// // 	.then( src => {
-// // 		console.log("Loading from src :", src);
-// // 	})
+const epubCFI = require('./lib/EpubCFI/src/epubcfi');
 
 export default class App extends React.Component {
+	constructor(props) {
+		super(props);
+		// this._onPressButton = this._onLongPressButton.bind(this);
+		this.onPress = this.onPress.bind(this);
+	}
+	onLongPress = (event) => {
+		console.log(event);
+		console.log("epubCFI.prototype.parse(): " , epubCFI.prototype.parse(event));
+		// console.log("epubCFI.prototype.position(): ", epubCFI.prototype.position(event));
+		// Alert.alert(event.target)
+	}
+
+	onPress(event){
+		console.log(event);
+	}
+
 	render() {
 		return (
-			<Epub style={styles.epub} src={"https://s3.amazonaws.com/epubjs/books/moby-dick/OPS/package.opf"}
-				flow="scrolled" />
+		// 	<TouchableHighlight style={styles.container}>
+		// 		<Text style={styles.button} onPress={ (event) => { this.onPress(event) } } >Testing this Highlight</Text>
+		// 	</TouchableHighlight>
+		// )
+			<Epub style={styles.epub} onLongPress={(event) => this.onLongPress(event)} src={"https://s3.amazonaws.com/epubjs/books/moby-dick/OPS/package.opf"}
+			flow="scrolled" />
 		)
 	}
 }
@@ -46,6 +40,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	button: {
+		marginBottom: 30,
+		width: 260,
+		alignItems: 'center',
+		backgroundColor: '#2196F3',
+		color: 'white'
 	},
 	epub: {
 		marginTop: 40,
