@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TouchableHighlight, Alert } from "react-native"
 
 import { Epub } from 'epubjs-rn';
 
+const epubCFI = require('./lib/EpubCFI/src/epubcfi');
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -11,6 +13,8 @@ export default class App extends React.Component {
 	}
 	onLongPress = (event) => {
 		console.log(event);
+		console.log("epubCFI.prototype.parse(): " , epubCFI.prototype.parse(event));
+		// console.log("epubCFI.prototype.position(): ", epubCFI.prototype.position(event));
 		// Alert.alert(event.target)
 	}
 
